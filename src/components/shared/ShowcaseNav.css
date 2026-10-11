@@ -1,0 +1,118 @@
+/* =============================================================
+   SHOWCASE NAV — Arrows + Dots + Counter
+   ============================================================= */
+
+.showcase-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+  position: relative;
+}
+
+/* ── Arrow buttons ── */
+.showcase-nav__arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--nav-accent, #8B5CF6) 70%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--nav-accent, #8B5CF6) 30%, transparent);
+}
+
+.showcase-nav__arrow:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--nav-accent, #8B5CF6) 90%, transparent);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--nav-accent, #8B5CF6) 50%, transparent);
+  transform: scale(1.1);
+}
+
+.showcase-nav__arrow:disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+}
+
+.showcase-nav__arrow:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--nav-accent, #8B5CF6) 50%, transparent);
+  outline-offset: 2px;
+}
+
+/* ── Dot indicators ── */
+.showcase-nav__dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.showcase-nav__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(148, 163, 184, 0.2);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.showcase-nav__dot:hover {
+  background: rgba(148, 163, 184, 0.35);
+  transform: scale(1.2);
+}
+
+.showcase-nav__dot--active {
+  width: 28px;
+  border-radius: 999px;
+  background: var(--dot-active, #8B5CF6);
+  border-color: transparent;
+  box-shadow: 0 0 12px color-mix(in srgb, var(--dot-active, #8B5CF6) 50%, transparent);
+}
+
+.showcase-nav__dot:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.5);
+  outline-offset: 2px;
+}
+
+/* ── Counter ── */
+.showcase-nav__counter {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #64748b;
+  letter-spacing: 0.06em;
+  position: absolute;
+  right: 0;
+}
+
+.showcase-nav__counter-current {
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+.showcase-nav__counter-sep {
+  margin: 0 4px;
+  color: #334155;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .showcase-nav {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .showcase-nav__counter {
+    margin-left: 0;
+    width: 100%;
+    text-align: center;
+  }
+}

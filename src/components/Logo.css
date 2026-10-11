@@ -1,0 +1,21 @@
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  position: relative;
+  transition: transform var(--duration-normal) var(--ease-bounce),
+              filter var(--duration-normal) var(--ease-default);
+}
+
+.logo__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}

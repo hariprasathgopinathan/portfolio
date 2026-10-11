@@ -1,0 +1,69 @@
+/* ===========================================================
+   SpotlightCard – Shared glassmorphism + spotlight styles
+   =========================================================== */
+
+.spotlight-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.2s ease;
+  will-change: transform;
+}
+
+.spotlight-card:hover {
+  border-color: var(--accent-glow, rgba(139, 92, 246, 0.4));
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 0 30px var(--accent-glow, rgba(139, 92, 246, 0.15));
+}
+
+/* Focus-visible for keyboard accessibility */
+.spotlight-card:focus-visible {
+  outline: 2px solid var(--accent-glow, rgba(139, 92, 246, 0.6));
+  outline-offset: 2px;
+  border-color: var(--accent-glow, rgba(139, 92, 246, 0.4));
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 30px var(--accent-glow, rgba(139, 92, 246, 0.15));
+}
+
+/* Cursor-tracking radial spotlight */
+.spotlight-card__spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    rgba(255, 255, 255, 0.06),
+    transparent 40%
+  );
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Border glow intensifier on hover */
+.spotlight-card__border-glow {
+  position: absolute;
+  inset: -1px;
+  border-radius: 20px;
+  background: radial-gradient(
+    600px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+    var(--accent-glow, rgba(139, 92, 246, 0.08)),
+    transparent 40%
+  );
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Press micro-interaction for interactive elements inside */
+.spotlight-card button:active,
+.spotlight-card a:active {
+  transform: scale(0.97);
+}

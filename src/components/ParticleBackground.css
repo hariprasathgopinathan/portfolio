@@ -1,0 +1,211 @@
+.particle-bg {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: -1;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(65, 50, 140, 0.06),
+      transparent 45%
+    ),
+    #02030a;
+}
+
+.particle-canvas {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   NEBULA BLOBS
+========================================================= */
+
+.glow-blob {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(110px);
+
+  pointer-events: none;
+
+  will-change: transform;
+
+  mix-blend-mode: screen;
+}
+
+/* PURPLE */
+
+.glow-blob--purple {
+  width: 520px;
+  height: 520px;
+
+  top: -160px;
+  left: -120px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(139, 92, 246, 0.11),
+      rgba(139, 92, 246, 0)
+    );
+
+  animation:
+    nebulaPurple 16s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+/* CYAN */
+
+.glow-blob--cyan {
+  width: 460px;
+  height: 460px;
+
+  top: 35%;
+  right: -160px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(34, 211, 238, 0.08),
+      rgba(34, 211, 238, 0)
+    );
+
+  animation:
+    nebulaCyan 20s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+/* MAGENTA */
+
+.glow-blob--magenta {
+  width: 420px;
+  height: 420px;
+
+  bottom: -120px;
+  left: 25%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(236, 72, 153, 0.06),
+      rgba(236, 72, 153, 0)
+    );
+
+  animation:
+    nebulaMagenta 18s
+    ease-in-out
+    infinite
+    alternate;
+}
+
+/* =========================================================
+   NEBULA ANIMATIONS
+========================================================= */
+
+@keyframes nebulaPurple {
+  0% {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      scale(1);
+  }
+
+  100% {
+    transform:
+      translate3d(
+        160px,
+        90px,
+        0
+      )
+      scale(1.15);
+  }
+}
+
+@keyframes nebulaCyan {
+  0% {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      scale(1);
+  }
+
+  100% {
+    transform:
+      translate3d(
+        -140px,
+        70px,
+        0
+      )
+      scale(1.12);
+  }
+}
+
+@keyframes nebulaMagenta {
+  0% {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      scale(0.95);
+  }
+
+  100% {
+    transform:
+      translate3d(
+        100px,
+        -80px,
+        0
+      )
+      scale(1.15);
+  }
+}
+
+/* =========================================================
+   SPACE VIGNETTE
+========================================================= */
+
+.space-vignette {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 35%,
+      rgba(0, 0, 0, 0.32) 75%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+
+  pointer-events: none;
+}

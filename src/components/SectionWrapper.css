@@ -1,0 +1,97 @@
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  padding-top: calc(var(--nav-height) + var(--space-16));
+  padding-bottom: var(--space-20);
+}
+
+.section__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--content-padding-lg);
+}
+
+.section__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-12);
+}
+
+.section__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  opacity: 0.8;
+}
+
+.section__number {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-accent-purple);
+  line-height: 1;
+}
+
+.section__separator {
+  font-family: var(--font-heading);
+  font-size: var(--text-md);
+  color: var(--color-text-muted);
+}
+
+.section__label {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-widest);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.section__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-extrabold);
+  color: var(--color-text-primary);
+  line-height: var(--leading-tight);
+}
+
+.section__content {
+  width: 100%;
+}
+
+/* ── First section (Home) has no numbered header of its own — it uses the sidebar ── */
+.section:first-of-type {
+  padding-top: var(--nav-height);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1023px) {
+  .section__inner {
+    padding: 0 var(--content-padding-sm);
+  }
+
+  .section {
+    padding-top: calc(var(--nav-height) + var(--space-12));
+    padding-bottom: var(--space-16);
+  }
+}
+
+@media (max-width: 639px) {
+  .section__number {
+    font-size: var(--text-lg);
+  }
+
+  .section__title {
+    font-size: var(--text-3xl);
+  }
+
+  .section {
+    min-height: auto;
+  }
+}

@@ -1,0 +1,68 @@
+/* ===========================================================
+   StatusChip – Positioned absolute in top-right of card
+   =========================================================== */
+.status-chip {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: var(--font-heading, 'Sora', sans-serif);
+  letter-spacing: 0.03em;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+  color: var(--chip-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transform: rotate(-3deg);
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.status-chip__emoji {
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.status-chip__label {
+  line-height: 1;
+}
+
+/* ===========================================================
+   TechTag – Branded pill with icon
+   =========================================================== */
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  background: var(--tag-bg);
+  border: 1px solid var(--tag-border);
+  color: var(--tag-color);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.tech-tag:hover {
+  filter: brightness(1.2);
+  border-color: var(--tag-color);
+}
+
+.tech-tag__icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.tech-tag__label {
+  line-height: 1;
+}

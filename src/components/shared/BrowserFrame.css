@@ -1,0 +1,186 @@
+/* =============================================================
+   BROWSER FRAME — macOS-style chrome with hover overlay
+   ============================================================= */
+
+.browser-frame {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(11, 16, 32, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.browser-frame:hover {
+  border-color: rgba(148, 163, 184, 0.22);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.55),
+    0 0 40px var(--frame-accent, rgba(139, 92, 246, 0.1)),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+/* ── Chrome bar ── */
+.browser-frame__chrome {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(5, 8, 22, 0.8);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+}
+
+.browser-frame__dots {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.browser-frame__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.browser-frame__dot--red    { background: #ff5f57; }
+.browser-frame__dot--yellow { background: #febc2e; }
+.browser-frame__dot--green  { background: #28c840; }
+
+.browser-frame__url-bar {
+  flex: 1;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.browser-frame__url-text {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  color: #64748b;
+  letter-spacing: 0.02em;
+}
+
+/* ── Viewport ── */
+.browser-frame__viewport {
+  position: relative;
+  min-height: 380px;
+  overflow: hidden;
+}
+
+.browser-frame__screenshot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+.browser-frame:hover .browser-frame__screenshot {
+  transform: scale(1.03);
+}
+
+/* ── Gradient placeholder (no screenshot) ── */
+.browser-frame__placeholder {
+  position: relative;
+  width: 100%;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.browser-frame__placeholder-mesh {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 70%, rgba(139, 92, 246, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 30%, rgba(34, 211, 238, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 50%, rgba(251, 113, 133, 0.06) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(5, 8, 22, 0.7) 0%, rgba(11, 16, 32, 0.95) 100%);
+  pointer-events: none;
+}
+
+.browser-frame__placeholder-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+  padding: 2rem;
+}
+
+.browser-frame__placeholder-icon {
+  color: rgba(139, 92, 246, 0.4);
+  opacity: 0.7;
+}
+
+.browser-frame__placeholder-icon svg {
+  width: 72px;
+  height: 72px;
+}
+
+.browser-frame__placeholder-title {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgba(248, 250, 252, 0.7);
+  letter-spacing: -0.01em;
+}
+
+.browser-frame__placeholder-sub {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Hover overlay (live demo link) ── */
+.browser-frame__hover-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 8, 22, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.browser-frame:hover .browser-frame__hover-overlay {
+  opacity: 1;
+}
+
+.browser-frame__hover-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgba(139, 92, 246, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e2e8f0;
+  transform: scale(0.8);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.browser-frame:hover .browser-frame__hover-btn {
+  transform: scale(1);
+}
+
+.browser-frame__hover-btn:hover {
+  background: rgba(139, 92, 246, 0.35);
+  transform: scale(1.1);
+}

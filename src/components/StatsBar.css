@@ -1,0 +1,155 @@
+/* =========================================================
+   STATS COMPRESSED MASTERPIECE
+   ========================================================= */
+
+.stats-masterpiece {
+  position: relative;
+  width: 100%;
+  padding: 20px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible; /* changed from hidden so orbs blend outwards */
+  font-family: 'Poppins', sans-serif;
+  background: transparent;
+  z-index: 1;
+}
+
+/* ── Ambient Orbs (Liquid Light Effect) ── */
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: floatOrb 20s infinite ease-in-out alternate;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.orb-cyan {
+  width: 300px;
+  height: 300px;
+  background: #06b6d4;
+  top: -50px;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.orb-purple {
+  width: 400px;
+  height: 400px;
+  background: #9333ea;
+  bottom: -100px;
+  right: 15%;
+  animation-delay: -5s;
+}
+
+.orb-blue {
+  width: 250px;
+  height: 250px;
+  background: #2563eb;
+  top: 30%;
+  left: 45%;
+  animation-delay: -10s;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.1); }
+  66% { transform: translate(-20px, 30px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* ── Compressed Grid ── */
+.stats-compressed-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* ── Compact Box ── */
+.stat-compact-box {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05),
+              0 10px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  min-height: 100px;
+}
+
+.stat-compact-box:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1),
+              0 15px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Icon ── */
+.stat-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 4px 10px rgba(255, 255, 255, 0.15));
+}
+
+.stat-compact-box:hover .stat-icon-wrapper {
+  transform: scale(1.15) rotate(-5deg);
+}
+
+/* ── Typography ── */
+.stat-typography {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-compact-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 2px 0;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.stat-compact-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #94a3b8;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .stats-compressed-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 640px) {
+  .stats-compressed-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-compressed-grid {
+    grid-template-columns: 1fr;
+  }
+}

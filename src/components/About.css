@@ -1,0 +1,199 @@
+.about {
+  width: 100%;
+  padding: var(--space-16) 0;
+  display: flex;
+  align-items: center;
+}
+
+.about__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  width: 100%;
+  align-items: center;
+}
+
+/* ── Left Visual (Planetary Rings) ── */
+.about__visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 500px;
+}
+
+.about__planetary-system {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-15deg); /* Match the angled rings in reference */
+}
+
+/* ── Animations ── */
+@keyframes ringSpin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes orbOrbit {
+  0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+/* Rings */
+.planet-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.planet-ring-1 { 
+  width: 300px; height: 300px; 
+  border-color: rgba(138, 43, 226, 0.4); 
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
+  animation: ringSpin 20s linear infinite;
+}
+.planet-ring-2 { 
+  width: 450px; height: 450px; 
+  border-color: rgba(0, 210, 255, 0.3); 
+  box-shadow: 0 0 15px rgba(0, 210, 255, 0.1);
+  animation: ringSpin 35s linear infinite reverse;
+}
+.planet-ring-3 { 
+  width: 600px; height: 600px; 
+  border-color: rgba(255, 255, 255, 0.05);
+  animation: ringSpin 50s linear infinite;
+}
+
+/* Orbiting Orbs */
+.orbit-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--color-accent-blue);
+  box-shadow: 0 0 10px var(--color-accent-blue);
+  top: 50%;
+  left: 50%;
+  margin-top: -6px; /* offset by half of height */
+  margin-left: -6px; /* offset by half of width */
+}
+
+.orb-1 {
+  width: 12px; height: 12px;
+  background: var(--color-accent-purple);
+  box-shadow: 0 0 15px var(--color-accent-purple);
+  animation: orbOrbit 10s linear infinite;
+}
+.orb-1 { animation-duration: 8s; } /* Override using unique translate in keyframe */
+@keyframes orbOrbit1 {
+  0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+}
+.orb-1 { animation: orbOrbit1 12s linear infinite; }
+
+.orb-2 {
+  width: 16px; height: 16px;
+  animation: orbOrbit2 20s linear infinite reverse;
+}
+@keyframes orbOrbit2 {
+  0% { transform: rotate(120deg) translateX(225px) rotate(-120deg); }
+  100% { transform: rotate(480deg) translateX(225px) rotate(-480deg); }
+}
+
+.orb-3 {
+  width: 8px; height: 8px;
+  background: #fff;
+  box-shadow: 0 0 10px #fff;
+  animation: orbOrbit3 30s linear infinite;
+}
+@keyframes orbOrbit3 {
+  0% { transform: rotate(240deg) translateX(300px) rotate(-240deg); }
+  100% { transform: rotate(600deg) translateX(300px) rotate(-600deg); }
+}
+
+/* Avatar */
+.about__avatar-container {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: var(--color-bg-base);
+  border: 2px solid rgba(138, 43, 226, 0.5);
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.3);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  transform: rotate(15deg); /* Counteract parent rotation so photo is upright */
+}
+
+.about__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+
+/* ── Right Content ── */
+.about__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  color: var(--color-text-secondary);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: var(--text-base);
+  line-height: 1.7;
+}
+
+/* Meta info */
+.about__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border-card);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-secondary);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
+
+.meta-icon {
+  color: var(--color-accent-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .about__container {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .about__visual {
+    height: 400px;
+  }
+}
