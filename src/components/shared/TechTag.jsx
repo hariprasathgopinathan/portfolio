@@ -21,9 +21,14 @@ const TECH_BRAND = {
   'git':         { icon: '📦',  bg: 'rgba(240,80,50,0.10)',  border: 'rgba(240,80,50,0.30)',  color: '#f05032' },
   'github':      { icon: '🐙',  bg: 'rgba(255,255,255,0.06)', border: 'rgba(255,255,255,0.20)', color: '#e2e8f0' },
   'firebase':    { icon: '🔥',  bg: 'rgba(255,202,40,0.10)', border: 'rgba(255,202,40,0.30)', color: '#ffca28' },
-  'node.js':     { icon: '🟢',  bg: 'rgba(104,159,56,0.10)', border: 'rgba(104,159,56,0.30)', color: '#68a038' },
-  'python':      { icon: '🐍',  bg: 'rgba(55,118,171,0.10)', border: 'rgba(55,118,171,0.30)', color: '#3776ab' },
-  'typescript':  { icon: '🔷',  bg: 'rgba(49,120,198,0.10)', border: 'rgba(49,120,198,0.30)', color: '#3178c6' },
+  'node.js':        { icon: '🟢',  bg: 'rgba(104,159,56,0.10)', border: 'rgba(104,159,56,0.30)', color: '#68a038' },
+  'mongodb atlas':  { icon: '🍃',  bg: 'rgba(71,162,72,0.10)',  border: 'rgba(71,162,72,0.30)',  color: '#47a248' },
+  'mongodb':        { icon: '🍃',  bg: 'rgba(71,162,72,0.10)',  border: 'rgba(71,162,72,0.30)',  color: '#47a248' },
+  'socket.io':      { icon: '⚡',  bg: 'rgba(255,255,255,0.08)', border: 'rgba(255,255,255,0.25)', color: '#ffffff' },
+  'maplibre gl js': { icon: '🗺️',  bg: 'rgba(49,130,206,0.10)', border: 'rgba(49,130,206,0.30)', color: '#38bdf8' },
+  'maplibre':       { icon: '🗺️',  bg: 'rgba(49,130,206,0.10)', border: 'rgba(49,130,206,0.30)', color: '#38bdf8' },
+  'python':         { icon: '🐍',  bg: 'rgba(55,118,171,0.10)', border: 'rgba(55,118,171,0.30)', color: '#3776ab' },
+  'typescript':     { icon: '🔷',  bg: 'rgba(49,120,198,0.10)', border: 'rgba(49,120,198,0.30)', color: '#3178c6' },
 };
 
 const getDefault = () => ({

@@ -1,3 +1,4 @@
+import nourishloopImg from '../assets/nourishloop.png';
 import cybernautixImg from '../assets/cybernautix.jpg';
 import tetrinoxImg from '../assets/tetrinox.jpg';
 
@@ -26,13 +27,13 @@ export const PORTFOLIO_DATA = {
   projects: [
     {
       id: "01",
-      title: "Expense Tracker Web App",
+      title: "NourishLoop — Food Rescue Platform",
       category: "Web",
-      description: "Track and manage expenses with local storage persistence and a fully responsive design.",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
-      technologies: ["JavaScript", "Tailwind CSS"],
-      githubUrl: "https://github.com/HARIPRASATH2985/smart-expense-analyzer.git",
-      liveUrl: "https://hariprasath2985.github.io/smart-expense-analyzer/"
+      description: "A full-stack platform connecting surplus food donors with nearby NGOs to streamline donation claims and pickups, reduce food waste, and support local communities.",
+      image: nourishloopImg,
+      technologies: ["React", "Node.js", "MongoDB Atlas", "Firebase", "Socket.IO", "MapLibre GL JS"],
+      githubUrl: "https://github.com/hariprasathgopinathan/nourishloop",
+      liveUrl: "https://nourishloop.web.app/"
     }
   ],
 

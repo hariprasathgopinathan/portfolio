@@ -20,12 +20,12 @@ const enrichProjectData = (projects) => {
     let highlights = [];
     const desc = project.description || '';
 
-    if (project.title.toLowerCase().includes('expense') || project.id === '01' || project.id === '02') {
+    if (project.title.toLowerCase().includes('nourishloop') || project.id === '01') {
       highlights = [
-        'Persistent data via localStorage — survives refresh',
-        'Category-based expense filtering and totals',
-        'Fully responsive mobile-first design approach',
-        'Clean vanilla JS without framework overhead',
+        'Role-based Donor and NGO portals with Firebase Authentication.',
+        'Location-based donation discovery and secure donation claiming.',
+        'Real-time notifications and donation lifecycle tracking.',
+        'Interactive maps and authorized pickup routing.',
       ];
     } else {
       // Fallback: split description into highlight-like phrases
