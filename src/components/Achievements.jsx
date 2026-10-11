@@ -79,7 +79,7 @@ const Achievements = () => {
           }
         });
       },
-      { root: null, rootMargin: '0px 0px -8% 0px', threshold: 0.15 }
+      { root: null, rootMargin: '50px 0px 50px 0px', threshold: 0.05 }
     );
 
     const cards = sectionRef.current?.querySelectorAll('.ach-card');

@@ -1,6 +1,6 @@
 .about {
   width: 100%;
-  padding: var(--space-16) 0;
+  padding: 0;
   display: flex;
   align-items: center;
 }
@@ -8,7 +8,7 @@
 .about__container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-16);
+  gap: clamp(1.75rem, 4vw, 3rem);
   width: 100%;
   align-items: center;
 }
@@ -19,7 +19,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  height: 500px;
+  height: clamp(340px, 40vw, 440px);
 }
 
 .about__planetary-system {
@@ -145,13 +145,13 @@
 .about__content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--card-element-gap);
 }
 
 .about__text {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: 0.85rem;
   color: var(--color-text-secondary);
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
@@ -163,9 +163,9 @@
 .about__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-6);
-  margin-top: var(--space-6);
-  padding-top: var(--space-6);
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
   border-top: 1px solid var(--color-border-card);
 }
 
@@ -190,7 +190,11 @@
 @media (max-width: 900px) {
   .about__container {
     grid-template-columns: 1fr;
-    gap: var(--space-12);
+    gap: clamp(1.5rem, 3.5vw, 2.25rem);
+  }
+
+  .about__visual {
+    height: 320px;
   }
 
   .about__visual {

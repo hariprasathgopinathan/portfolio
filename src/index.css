@@ -68,18 +68,40 @@
   --weight-bold:           700;
   --weight-black:          900;
   
-  /* ── Spacing ── */
+  /* ── Spacing Scale ── */
+  --space-0-5: 0.125rem;
   --space-1:   0.25rem;
   --space-2:   0.5rem;
   --space-3:   0.75rem;
   --space-4:   1rem;
+  --space-5:   1.25rem;
   --space-6:   1.5rem;
   --space-8:   2rem;
+  --space-10:  2.5rem;
   --space-12:  3rem;
   --space-16:  4rem;
+  --space-20:  5rem;
   --space-24:  6rem;
   --space-32:  8rem;
+
+  /* ── Established Spacing System (Design Tokens) ── */
+  --section-gap-global:           clamp(2.75rem, 5.5vw, 4rem);    /* Harmonious vertical gap between all sections */
+  --section-padding-x:            clamp(1rem, 3.5vw, 2rem);       /* Responsive horizontal page gutter */
+  --section-header-gap:           0.45rem;                        /* Tight, balanced gap between section Title & Subtitle */
+  --section-header-margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);  /* Balanced space below section header before content */
   
+  --card-padding-sm:              1.25rem;
+  --card-padding-md:              clamp(1.5rem, 3vw, 2rem);
+  --card-padding-lg:              clamp(1.75rem, 3.5vw, 2.5rem);
+  --card-element-gap:             clamp(0.85rem, 1.8vw, 1.25rem); /* Gap between elements inside cards */
+  --stack-cards-gap:              clamp(1.75rem, 3.5vw, 2.5rem);  /* Gap between stacked cards */
+  --button-group-gap:             0.75rem;                        /* Gap between action buttons */
+  
+  /* ── Layout & Navigation ── */
+  --container-width:       1200px;
+  --nav-height:            80px;
+  --nav-scroll-offset:     calc(var(--nav-height) + 1.25rem);     /* Breathing room so sticky navbar never overlaps titles */
+
   /* ── Border Radius ── */
   --radius-sm:   4px;
   --radius-md:   8px;
@@ -92,10 +114,6 @@
   --glow-button:         0 0 20px rgba(138, 43, 226, 0.4);
   --glow-text:           0 0 10px rgba(138, 43, 226, 0.5);
   --glow-accent:         0 0 30px rgba(0, 210, 255, 0.2);
-  
-  /* ── Layout ── */
-  --container-width:     1200px;
-  --nav-height:          80px;
   
   /* ── Animation ── */
   --transition-fast:     150ms ease-out;
@@ -114,7 +132,13 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-scroll-offset);
   background-color: var(--color-bg-base);
+}
+
+section[id],
+#home, #about, #skills, #projects, #achievements, #education, #contact {
+  scroll-margin-top: var(--nav-scroll-offset);
 }
 
 body {

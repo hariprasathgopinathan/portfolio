@@ -7,12 +7,12 @@
 .skills-horizontal-section {
   position: relative;
   width: 100%;
-  padding: var(--space-8) var(--space-2);
+  padding: 0;
   overflow: visible;
   display: flex;
   flex-direction: column;
   align-items: center;
-  scroll-margin-top: calc(var(--nav-height) + 20px);
+  scroll-margin-top: var(--nav-scroll-offset);
 }
 
 .skills-horizontal-container {
@@ -63,7 +63,7 @@
 /* ── Centered Section Header ── */
 .skills-horizontal-header {
   text-align: center;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--section-header-margin-bottom);
   position: relative;
   z-index: 2;
 }
