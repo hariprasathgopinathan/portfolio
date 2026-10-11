@@ -162,6 +162,11 @@ button {
   font-weight: 700;
 }
 
+.text-purple {
+  color: #a855f7;
+  font-weight: 700;
+}
+
 ul, ol {
   list-style: none;
 }

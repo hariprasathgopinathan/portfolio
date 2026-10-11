@@ -20,14 +20,7 @@ const enrichProjectData = (projects) => {
     let highlights = [];
     const desc = project.description || '';
 
-    if (project.id === '01') {
-      highlights = [
-        'Dynamic task CRUD with real-time UI state updates',
-        'Component-based architecture for maintainability',
-        'Clean separation of concerns across modules',
-        'Responsive layout adapts to any screen size',
-      ];
-    } else if (project.id === '02') {
+    if (project.title.toLowerCase().includes('expense') || project.id === '01' || project.id === '02') {
       highlights = [
         'Persistent data via localStorage — survives refresh',
         'Category-based expense filtering and totals',

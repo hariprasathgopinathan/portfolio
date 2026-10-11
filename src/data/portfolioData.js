@@ -25,7 +25,7 @@ export const PORTFOLIO_DATA = {
 
   projects: [
     {
-      id: "02",
+      id: "01",
       title: "Expense Tracker Web App",
       category: "Web",
       description: "Track and manage expenses with local storage persistence and a fully responsive design.",
@@ -33,16 +33,6 @@ export const PORTFOLIO_DATA = {
       technologies: ["JavaScript", "Tailwind CSS"],
       githubUrl: "https://github.com/HARIPRASATH2985/smart-expense-analyzer.git",
       liveUrl: "https://hariprasath2985.github.io/smart-expense-analyzer/"
-    },
-    {
-      id: "01",
-      title: "Task Manager Web Application",
-      category: "Web",
-      description: "A comprehensive task management solution with dynamic UI updates and component-based architecture.",
-      image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
-      technologies: ["React.js", "CSS"],
-      githubUrl: "",
-      liveUrl: ""
     }
   ],
 

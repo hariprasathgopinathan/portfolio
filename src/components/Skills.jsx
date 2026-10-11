@@ -1,110 +1,238 @@
 import React from 'react';
-import './Skills.css';
+import {
+  SiHtml5,
+  SiJavascript,
+  SiReact,
+  SiTailwindcss,
+  SiGit,
+  SiGithub,
+} from 'react-icons/si';
+import { FaJava, FaCss3Alt } from 'react-icons/fa6';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
+import './Skills.css';
 
-// Reusing some SVG icons, and a generic one for others to maintain visual consistency
-const SkillIcon = ({ name }) => {
-  const nameLower = name.toLowerCase();
-  
-  if (nameLower.includes('react')) {
-    return (
-      <svg viewBox="-11.5 -10.23174 23 20.46348" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="0" cy="0" r="2.05" fill="#61dafb"/>
-        <g stroke="#61dafb" strokeWidth="1" fill="none">
-          <ellipse rx="11" ry="4.2"/><ellipse rx="11" ry="4.2" transform="rotate(60)"/><ellipse rx="11" ry="4.2" transform="rotate(120)"/>
-        </g>
-      </svg>
-    );
+/**
+ * Authentic multi-colored Google Firebase flame SVG logo
+ * (Yellow, amber-orange, and deep red flame teardrops matching official branding)
+ */
+const FirebaseIcon = ({ size = 38, className = '' }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 162 200"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    aria-hidden="true"
+    style={{ overflow: 'visible', display: 'inline-block', verticalAlign: 'middle' }}
+  >
+    {/* Bottom segment */}
+    <path
+      d="M51.2275 191.109C59.4031 194.399 68.2727 196.352 77.5857 196.677C90.1896 197.117 102.175 194.511 112.89 189.561C100.041 184.513 88.4043 177.131 78.4729 167.952C72.0352 178.26 62.5135 186.401 51.2275 191.109Z"
+      fill="#FF9100"
+    />
+    {/* Left-middle segment (yellow) */}
+    <path
+      d="M78.4711 167.955C55.8006 146.988 42.0477 116.641 43.21 83.3558C43.2478 82.2749 43.3048 81.1947 43.3715 80.1148C39.3113 79.0647 35.0725 78.4239 30.7103 78.2716C24.4663 78.0535 18.4195 78.8279 12.7108 80.4355C6.659 91.0365 3.00696 103.2 2.552 116.228C1.37785 149.852 21.7254 179.231 51.2257 191.112C62.5117 186.404 72.0331 178.272 78.4711 167.955Z"
+      fill="#FFC400"
+    />
+    {/* Right-middle overlap (orange) */}
+    <path
+      d="M78.472 167.954C83.7428 159.519 86.9386 149.63 87.3106 138.976C88.2893 110.95 69.4486 86.8412 43.3725 80.1137C43.3058 81.1936 43.2487 82.2738 43.211 83.3547C42.0486 116.64 55.8015 146.987 78.472 167.954Z"
+      fill="#FF9100"
+    />
+    {/* Top/Right segment (red-orange) */}
+    <path
+      d="M84.3945 1.33524C69.5432 13.233 57.8158 28.9212 50.7205 46.9936C46.6583 57.3453 44.1056 68.4647 43.3603 80.1206C69.4365 86.8481 88.2772 110.957 87.2985 138.983C86.9264 149.637 83.7213 159.516 78.4599 167.961C88.391 177.149 100.028 184.522 112.877 189.57C138.667 177.649 156.965 151.996 158.025 121.654C158.711 101.995 151.158 84.4744 140.485 69.6852C129.214 54.0442 84.3945 1.33524 84.3945 1.33524Z"
+      fill="#DD2C00"
+    />
+  </svg>
+);
+
+/**
+ * Authentic brand metadata with tool titles and refined single-phrase captions
+ */
+const TECH_REGISTRY = {
+  java: {
+    displayName: 'Java',
+    caption: 'Core Logic & OOP',
+    Icon: FaJava,
+    brandColor: '#F89820',
+    glowColor: 'rgba(248, 152, 32, 0.45)',
+  },
+  html: {
+    displayName: 'HTML',
+    caption: 'Semantic Markup',
+    Icon: SiHtml5,
+    brandColor: '#E34F26',
+    glowColor: 'rgba(227, 79, 38, 0.45)',
+  },
+  css: {
+    displayName: 'CSS',
+    caption: 'Styling & Animation',
+    Icon: FaCss3Alt,
+    brandColor: '#264DE4',
+    glowColor: 'rgba(38, 77, 228, 0.45)',
+  },
+  javascript: {
+    displayName: 'JavaScript',
+    caption: 'Modern Scripting',
+    Icon: SiJavascript,
+    brandColor: '#F7DF1E',
+    glowColor: 'rgba(247, 223, 30, 0.45)',
+  },
+  'react.js': {
+    displayName: 'React.js',
+    caption: 'UI Architecture',
+    Icon: SiReact,
+    brandColor: '#61DAFB',
+    glowColor: 'rgba(97, 218, 251, 0.5)',
+  },
+  react: {
+    displayName: 'React.js',
+    caption: 'UI Architecture',
+    Icon: SiReact,
+    brandColor: '#61DAFB',
+    glowColor: 'rgba(97, 218, 251, 0.5)',
+  },
+  'tailwind css': {
+    displayName: 'Tailwind CSS',
+    caption: 'Modern Styling',
+    Icon: SiTailwindcss,
+    brandColor: '#38BDF8',
+    glowColor: 'rgba(56, 189, 248, 0.45)',
+  },
+  git: {
+    displayName: 'Git',
+    caption: 'Version Control',
+    Icon: SiGit,
+    brandColor: '#F05032',
+    glowColor: 'rgba(240, 80, 50, 0.45)',
+  },
+  github: {
+    displayName: 'GitHub',
+    caption: 'Repos & Collab',
+    Icon: SiGithub,
+    brandColor: '#FFFFFF',
+    glowColor: 'rgba(255, 255, 255, 0.4)',
+  },
+  firebase: {
+    displayName: 'Firebase',
+    caption: 'Backend & Cloud',
+    Icon: FirebaseIcon,
+    brandColor: '#FFA000',
+    glowColor: 'rgba(255, 160, 0, 0.5)',
+  },
+};
+
+const getTechDetails = (skillName) => {
+  if (!skillName) {
+    return {
+      displayName: '',
+      caption: '',
+      Icon: null,
+      brandColor: '#8B5CF6',
+      glowColor: 'rgba(139, 92, 246, 0.4)',
+    };
   }
-  if (nameLower.includes('java') && !nameLower.includes('script')) {
-    return (
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="#f89820" xmlns="http://www.w3.org/2000/svg">
-        <path d="M16.27,10.28c-0.64-1.25-2.02-1.92-3.15-2.58c-1.89-1.12-3.83-2.27-4.11-4.52C8.97,2.83,9.11,2.5,9.22,2.2 C9.28,2.02,9.15,1.83,8.97,1.82c-0.21,0-0.41,0.06-0.57,0.18C6.91,3.13,5.65,5.32,5.65,7.9c0,1.38,0.47,2.77,1.44,3.75 c-1.07-0.08-2.12-0.56-2.91-1.35C4.01,10.12,3.71,10.3,3.79,10.53c0.64,1.86,2.2,3.31,4.1,3.95c-1.32,0.15-2.61,0.03-3.83-0.34 c-0.23-0.07-0.45,0.17-0.34,0.38c0.88,1.67,2.39,2.87,4.24,3.36c-2.31,0.51-4.8,0.3-6.94-0.61c-0.25-0.11-0.52,0.15-0.37,0.38 c2.25,3.37,6.31,5.18,10.53,4.72c4.95-0.54,9.08-4.5,9.83-9.45c0.52-3.41-0.52-6.84-2.8-9.35c-0.16-0.18-0.46-0.15-0.57,0.05 C17.38,4.7,17.47,7.96,16.27,10.28z M12.8,17.3c-0.78,1.48-2.48,2.27-4.14,2.01c1.38-0.95,2.04-2.58,1.61-4.18 c1.36,0.35,2.51,1.25,3.16,2.44C13.56,17.82,13.23,17.91,12.8,17.3z"/>
-      </svg>
-    );
-  }
-  if (nameLower.includes('javascript')) {
-    return (
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="#f7df1e" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 0h24v24H0V0z" fill="none"/><path d="M3 3h18v18H3V3zm11.75 11.53c0-.82-.6-1.32-1.74-1.76-1.1-.42-1.48-.68-1.48-1.18 0-.48.44-.8 1.15-.8.74 0 1.25.32 1.48.88l1.45-.92c-.44-1-1.43-1.63-2.92-1.63-1.6 0-2.85.9-2.85 2.45 0 1.46 1.05 1.95 2.5 2.5 1.04.38 1.42.72 1.42 1.25 0 .6-.53.96-1.3.96-.86 0-1.54-.42-1.85-1.14l-1.5 1.04c.55 1.34 1.76 1.83 3.32 1.83 1.8 0 3.02-.92 3.02-2.53zm-5.75.92V9.5H7.25v7c0 1.33.8 2.06 2.38 2.06 1.05 0 1.7-.3 2.1-.73l-1.07-1.3c-.22.25-.56.4-.95.4-.55 0-.7-.3-.7-1.46z"/>
-      </svg>
-    );
-  }
-  if (nameLower.includes('firebase')) {
-    return (
-      <svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#ffca28" d="M11.69,21.57l-8.6-14.9L2.83,6.2C2.63,5.86,2.94,5.43,3.34,5.55l8.53,2.52L11.69,21.57z"/>
-        <path fill="#ffa000" d="M12.06,22.06l-0.37-0.49l7.07-13.43c0.23-0.44,0.86-0.42,1.06,0.04l2.1,4.75L12.06,22.06z"/>
-        <path fill="#f57c00" d="M11.87,8.07l2.94,8.81L14.77,5.53c-0.1-0.37-0.61-0.41-0.76-0.06L11.87,8.07z"/>
-        <path fill="#ffca28" d="M11.69,21.57l-3.3-17.72c-0.08-0.4,0.44-0.63,0.73-0.32L11.87,8.07L11.69,21.57z"/>
-      </svg>
-    );
-  }
-  if (nameLower === 'html') {
-    return (
-      <svg viewBox="0 0 384 512" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#e34f26" d="M0 32l34.9 395.8L191.5 480l157.6-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"/>
-      </svg>
-    );
-  }
-  if (nameLower === 'css') {
-    return (
-      <svg viewBox="0 0 384 512" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#1572B6" d="M0 32l34.9 395.8L192 480l157.1-52.2L384 32H0zm313.1 80l-4.8 47.3L193 208.6l-.3.1h111.5l-12.8 146.6-98.2 28.7-98.8-29.2-6.4-73.9h48.9l3.2 38.3 52.6 13.3 54.7-15.4 3.7-61.6-166.3-.5v-.1l-.2.1-3.6-46.3L193.1 162l6.5-2.7H76.7L70.9 112h242.2z"/>
-      </svg>
-    );
-  }
-  if (nameLower.includes('tailwind')) {
-    return (
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zM6.001 12c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z" fill="#38bdf8"/>
-      </svg>
-    );
-  }
-  if (nameLower === 'git') {
-    return (
-      <svg viewBox="0 0 100 100" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
-        <path fill="#f14e32" d="M47.78,94.94l47.16-47.16a6.83,6.83,0,0,0,0-9.66L49.46,2.64A6.83,6.83,0,0,0,39.8,2.64L2.64,39.8a6.83,6.83,0,0,0,0,9.66l45.48,45.48Z"/>
-        <path fill="#fff" d="M44.75,70.52a6,6,0,1,1,6-6A6,6,0,0,1,44.75,70.52Zm12.18-12a6,6,0,1,1,6-6A6,6,0,0,1,56.93,58.53Zm-12.18,0V41.47a6.08,6.08,0,0,1-3-1.6,5.82,5.82,0,0,1-1.28-2.65L28,49.69a5.95,5.95,0,0,1,2.5,8.44,5.95,5.95,0,0,1-8.44,2.5,5.95,5.95,0,0,1-2.5-8.44,5.95,5.95,0,0,1,8.44-2.5l12.42-12.42a6.05,6.05,0,1,1,6-6V58.53a6.05,6.05,0,0,1-1.69,8A5.94,5.94,0,0,1,44.75,70.52Z"/>
-      </svg>
-    );
-  }
-  if (nameLower.includes('github')) {
-    return (
-      <svg viewBox="0 0 24 24" width="24" height="24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg">
-        <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.268 2.75 1.022A9.606 9.606 0 0112 6.82c.85.004 1.705.114 2.504.336 1.909-1.29 2.747-1.022 2.747-1.022.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/>
-      </svg>
-    );
-  }
-  
-  // Generic tech icon for responsive web design
-  return (
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{color: 'var(--color-accent-blue)'}}>
-      <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-      <line x1="8" y1="21" x2="16" y2="21"></line>
-      <line x1="12" y1="17" x2="12" y2="21"></line>
-    </svg>
-  );
+
+  const normalized = skillName.toLowerCase().trim();
+  if (TECH_REGISTRY[normalized]) return TECH_REGISTRY[normalized];
+
+  if (normalized.includes('react')) return TECH_REGISTRY['react.js'];
+  if (normalized.includes('tailwind')) return TECH_REGISTRY['tailwind css'];
+  if (normalized.includes('git') && !normalized.includes('hub')) return TECH_REGISTRY['git'];
+  if (normalized.includes('github')) return TECH_REGISTRY['github'];
+  if (normalized.includes('java') && !normalized.includes('script')) return TECH_REGISTRY['java'];
+  if (normalized.includes('script')) return TECH_REGISTRY['javascript'];
+  if (normalized.includes('html')) return TECH_REGISTRY['html'];
+  if (normalized.includes('css')) return TECH_REGISTRY['css'];
+  if (normalized.includes('firebase')) return TECH_REGISTRY['firebase'];
+
+  return {
+    displayName: skillName,
+    caption: 'Technology',
+    Icon: null,
+    brandColor: '#8B5CF6',
+    glowColor: 'rgba(139, 92, 246, 0.4)',
+  };
 };
 
 const Skills = () => {
-  const { skills } = PORTFOLIO_DATA;
+  const { skills = [] } = PORTFOLIO_DATA;
+
+  // Split skills into exactly 2 centered horizontal lines:
+  // Line 1: Java, HTML, CSS, JavaScript, React.js (5 tools)
+  // Line 2: Tailwind CSS, Git, GitHub, Firebase (4 tools)
+  const line1Skills = skills.slice(0, 5);
+  const line2Skills = skills.slice(5);
+
+  const renderSkillItem = (skillName) => {
+    const tech = getTechDetails(skillName);
+    const IconComponent = tech.Icon;
+
+    return (
+      <div
+        key={skillName}
+        className="skill-node-borderless"
+        tabIndex={0}
+        role="listitem"
+        aria-label={`${tech.displayName}: ${tech.caption}`}
+        style={{
+          '--tech-color': tech.brandColor,
+          '--tech-glow': tech.glowColor,
+        }}
+      >
+        {/* Soft radial ambient glow */}
+        <div className="skill-node-borderless__aura" aria-hidden="true" />
+
+        {/* Brand Icon */}
+        <div className="skill-node-borderless__icon-wrapper">
+          <div className="skill-node-borderless__icon-halo" aria-hidden="true" />
+          {IconComponent ? (
+            <IconComponent size={38} className="skill-node-brand-icon" />
+          ) : (
+            <span>•</span>
+          )}
+        </div>
+
+        {/* Title & Caption */}
+        <div className="skill-node-borderless__meta">
+          <span className="skill-node-borderless__name">{tech.displayName}</span>
+          <span className="skill-node-borderless__caption">{tech.caption}</span>
+        </div>
+      </div>
+    );
+  };
 
   return (
-    <section id="skills" className="skills">
-      <div className="skills__header">
-        <h2 className="section-title">My Technology Ecosystem</h2>
+    <section id="skills" className="skills-horizontal-section" aria-labelledby="skills-heading">
+      {/* Cosmic Subtle Ambient Glows */}
+      <div className="skills-horizontal-section__ambient" aria-hidden="true">
+        <div className="skills-ambient-glow skills-ambient-glow--violet" />
+        <div className="skills-ambient-glow skills-ambient-glow--cyan" />
       </div>
 
-      <div className="skills__grid">
-        {skills.map((skill, index) => (
-          <div key={index} className="skill-card">
-            <div className="skill-card__icon">
-              <SkillIcon name={skill} />
-            </div>
-            <span className="skill-card__name">{skill}</span>
+      <div className="skills-horizontal-container">
+        {/* Centered Section Header */}
+        <div className="skills-horizontal-header">
+          <h2 id="skills-heading" className="skills-horizontal-title">
+            My Technology <span className="skills-horizontal-title-gradient">Ecosystem</span>
+          </h2>
+        </div>
+
+        {/* Centered 2-Line Technology Showcase */}
+        <div className="skills-twoline-track" role="list">
+          {/* Line 1 (5 tools) */}
+          <div className="skills-twoline-row skills-twoline-row--1">
+            {line1Skills.map(renderSkillItem)}
           </div>
-        ))}
+
+          {/* Line 2 (4 tools) */}
+          <div className="skills-twoline-row skills-twoline-row--2">
+            {line2Skills.map(renderSkillItem)}
+          </div>
+        </div>
       </div>
     </section>
   );

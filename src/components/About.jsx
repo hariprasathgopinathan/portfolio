@@ -63,10 +63,10 @@ const About = () => {
           
           <div className="about__text">
             <p>
-              I am Hariprasath G, a final-year <span className="text-orange">Computer Science</span> and Business Systems student at Sri Sairam Engineering College. I am interested in <span className="text-blue">software development</span>, programming, problem solving and building practical <span className="text-gold">web applications</span>.
+              I am Hariprasath G, a final-year <span className="text-purple">Computer Science</span> and Business Systems student at Sri Sairam Engineering College. I am interested in <span className="text-purple">software development</span>, programming, problem solving and building practical <span className="text-purple">web applications</span>.
             </p>
             <p>
-              Strengthening <span className="text-orange">Java</span> and software development fundamentals while building <span className="text-blue">responsive web experiences</span> with modern <span className="text-gold">frontend technologies</span>.
+              Strengthening <span className="text-purple">Java</span> and software development fundamentals while building <span className="text-purple">responsive web experiences</span> with modern <span className="text-purple">frontend technologies</span>.
             </p>
           </div>
 
