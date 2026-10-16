@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { ExternalLink, ChevronRight } from 'lucide-react';
-import BrowserFrame from './shared/BrowserFrame';
 import TechTag from './shared/TechTag';
-import './shared/BrowserFrame.css';
 import './shared/SharedComponents.css';
 import './Projects.css';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
@@ -101,12 +99,21 @@ const Projects = () => {
                 <div className="proj-card__inner">
                   {/* Image Panel */}
                   <div className={`proj-card__visual ${isEven ? '' : 'proj-card__visual--flip'}`}>
-                    <BrowserFrame
-                      imageSrc={project.image || ''}
-                      title={project.title}
-                      liveUrl={project.liveUrl}
-                      accentColor={accent}
-                    />
+                    {/* Plain image card — no browser chrome */}
+                    <div className="proj-card__img-card" style={{ '--card-accent': accent }}>
+                      {project.image ? (
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="proj-card__img"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="proj-card__img-placeholder">
+                          <span>{project.title}</span>
+                        </div>
+                      )}
+                    </div>
 
                     {/* Action Buttons */}
                     <div className="proj-card__actions">
