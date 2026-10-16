@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Contact.css';
 import { PORTFOLIO_DATA } from '../data/portfolioData';
+import { contactService } from '../services/contactService';
 
 /* ── Premium SVG Icons with gradients & layered design ── */
 const MailIcon = () => (
@@ -201,17 +202,35 @@ const DoneAllIcon = () => (
   </svg>
 );
 
+const EMPTY_FORM = { name: '', email: '', subject: '', message: '' };
+
 const Contact = () => {
   const { contact, about } = PORTFOLIO_DATA;
-  const [formStatus, setFormStatus] = useState('idle');
+  const [formStatus, setFormStatus]   = useState('idle'); // 'idle' | 'sending' | 'success' | 'error'
+  const [formData,   setFormData]     = useState(EMPTY_FORM);
+  const [errorMsg,   setErrorMsg]     = useState('');
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    // Map DOM id -> formData key
+    const key = id.replace('contact-', '');
+    setFormData(prev => ({ ...prev, [key]: value }));
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormStatus('sending');
-    setTimeout(() => {
+    setErrorMsg('');
+
+    const result = await contactService.sendMessage(formData);
+
+    if (result.success) {
       setFormStatus('success');
-      console.log('Frontend Demo: Form validation passed, but no backend is connected.');
-    }, 1000);
+      setFormData(EMPTY_FORM);
+    } else {
+      setFormStatus('error');
+      setErrorMsg(result.error || 'Something went wrong. Please try again.');
+    }
   };
 
   return (
@@ -305,7 +324,9 @@ const Contact = () => {
                     type="text"
                     placeholder="e.g. Hariprasath"
                     required
-                    disabled={formStatus !== 'idle'}
+                    value={formData.name}
+                    onChange={handleChange}
+                    disabled={formStatus === 'sending' || formStatus === 'success'}
                   />
                 </div>
                 <div className="contact-form__group">
@@ -316,7 +337,9 @@ const Contact = () => {
                     type="email"
                     placeholder="e.g. hariprasath@email.com"
                     required
-                    disabled={formStatus !== 'idle'}
+                    value={formData.email}
+                    onChange={handleChange}
+                    disabled={formStatus === 'sending' || formStatus === 'success'}
                   />
                 </div>
               </div>
@@ -329,7 +352,9 @@ const Contact = () => {
                   type="text"
                   placeholder="Collaboration, Full-Stack Opportunity, or Tech Chat"
                   required
-                  disabled={formStatus !== 'idle'}
+                  value={formData.subject}
+                  onChange={handleChange}
+                  disabled={formStatus === 'sending' || formStatus === 'success'}
                 />
               </div>
 
@@ -341,7 +366,9 @@ const Contact = () => {
                   placeholder="Share project scope, timeline, or just say hello..."
                   rows="4"
                   required
-                  disabled={formStatus !== 'idle'}
+                  value={formData.message}
+                  onChange={handleChange}
+                  disabled={formStatus === 'sending' || formStatus === 'success'}
                 />
               </div>
 
@@ -349,9 +376,9 @@ const Contact = () => {
                 <button
                   type="submit"
                   className="contact-form__submit"
-                  disabled={formStatus !== 'idle'}
+                  disabled={formStatus === 'sending' || formStatus === 'success'}
                 >
-                  {formStatus === 'idle' && (
+                  {(formStatus === 'idle' || formStatus === 'error') && (
                     <>
                       <span>Transmit Message</span>
                       <SendIcon />
@@ -367,6 +394,13 @@ const Contact = () => {
                 <div className="contact-form__success">
                   <DoneAllIcon />
                   <span>Message dispatched successfully! Hariprasath will connect with you soon.</span>
+                </div>
+              )}
+
+              {/* Error notification */}
+              {formStatus === 'error' && (
+                <div className="contact-form__error">
+                  <span>⚠ {errorMsg}</span>
                 </div>
               )}
             </form>
