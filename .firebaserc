@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "portfolio-d6917"
+  },
+  "targets": {
+    "portfolio-d6917": {
+      "hosting": {
+        "portfolio-site": [
+          "hariprasath-g"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
